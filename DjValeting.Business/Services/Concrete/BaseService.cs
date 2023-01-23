@@ -18,7 +18,7 @@ namespace DjValeting.Business.Services.Concrete
             _mapper = mapper;
         }
 
-        public async Task<TDto> AddAsync(TDto dto)
+        public virtual async Task<TDto> AddAsync(TDto dto)
         {
             var request = _mapper.Map<TEntity>(dto);
             var response = await _repository.AddAsync(request);
@@ -26,20 +26,20 @@ namespace DjValeting.Business.Services.Concrete
             return result;
         }
 
-        public async Task<bool> DeleteAsync(Guid id)
+        public virtual async Task<bool> DeleteAsync(Guid id)
         {
             var result = await _repository.DeleteAsync(id);
             return result;
         }
 
-        public async Task<TDto> FindByIdAsync(Guid id)
+        public virtual async Task<TDto> FindByIdAsync(Guid id)
         {
             var response = await _repository.FindByIdAsync(id);
             var result = _mapper.Map<TDto>(response);
             return result;
         }
 
-        public async Task<IQueryable<TDto>> GetAllAsync()
+        public virtual async Task<IQueryable<TDto>> GetAllAsync()
         {
             var response = await _repository.GetAllAsync();
             var result = _mapper.ProjectTo<TDto>(response);

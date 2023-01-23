@@ -1,12 +1,21 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DjValeting.Business.Services.Abstract;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DjValeting.WebUI.Controllers
 {
     public class AdminController : Controller
     {
-        public IActionResult Index()
+        private readonly IBookingFormService _brakingFormService;
+        public AdminController(IBookingFormService bokkingFormService)
         {
-            return View();
+            _brakingFormService= bokkingFormService;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Index()
+        {
+            var result = await _brakingFormService.GetAllAsync();
+            return View(result);
         }
     }
 }

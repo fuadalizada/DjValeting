@@ -28,11 +28,13 @@ namespace DjValeting.WebUI.Utils
         private void DependencyInjectionRepositories(IServiceCollection services)
         {
             services.AddScoped<IAuthenticateRepository, AuthenticateRepository>();
+            services.AddScoped<IBookingFormRepository, BookingFormRepository>();
         }
 
         private void DependencyInjectionServices(IServiceCollection services)
         {
             services.AddScoped<IAuthenticateService,AuthenticateService>();
+            services.AddScoped<IBookingFormService,BookingFormService>();
         }
 
         private void DependencyInjectionMappers(IServiceCollection service)

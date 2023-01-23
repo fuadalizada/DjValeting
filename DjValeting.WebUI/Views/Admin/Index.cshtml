@@ -1,8 +1,41 @@
-﻿
+﻿@using DjValeting.Business.DTOs;
+@model List<BookingFormDto>
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Admin Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Admin Page</h1>
+
+<script src="~/customscripts/admindatatablejs.js"></script>
+<div class="row mt-5">
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover" style="width:100%;" id="adminTable">
+            <thead class="table table-bordered">
+                <tr>
+                    <th>Name<br /><input type="text" placeholder="&#xF002;" class="form-control" /></th>
+                    <th>Flexibility<br /><input type="text" placeholder="&#xF002;" class="form-control" /></th>
+                    <th>Vehicle Size<br /><input type="text" placeholder="&#xF002;" class="form-control" /></th>
+                    <th>Booking Date<br /><input type="text" placeholder="&#xF002;" class="form-control" /></th>
+                    <th>Contact Number<br /><input type="text" placeholder="&#xF002;" class="form-control" /></th>
+                    <th>Email Address<br /><input type="text" placeholder="&#xF002;" class="form-control" /></th>
+                    @*<th class="deleteIcon deleteNotification" title="Bütün bildirişləri sil."><i style="color: red; font-size: 13px; font-weight: bold;" class="fas fa-trash-alt "></i></th>*@
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>@item.FlexibilityId</td>
+                        <td>@item.VehicleSizeId</td>
+                        <td>@item.CreateDate.ToShortDateString()</td>
+                        <td>@item.ContactNumber</td>
+                        <td>@item.Email</td>
+                    </tr>
+                }                
+            </tbody>            
+        </table>
+    </div>
+</div>
 

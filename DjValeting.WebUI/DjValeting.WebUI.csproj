@@ -23,7 +23,6 @@
 
   <ItemGroup>
     <Folder Include="Models\ViewModels\" />
-    <Folder Include="wwwroot\customScripts\" />
   </ItemGroup>
 
 </Project>
