@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DjValeting.Domain", "DjVale
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DjValeting.DAL", "DjValeting.DAL\DjValeting.DAL.csproj", "{2DCA08B2-6F67-41C3-B998-B4C8C51770FB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DjValeting.Business", "DjValeting.Business\DjValeting.Business.csproj", "{10F8D53C-0314-495F-9557-90243E6E5B5C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{2DCA08B2-6F67-41C3-B998-B4C8C51770FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2DCA08B2-6F67-41C3-B998-B4C8C51770FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2DCA08B2-6F67-41C3-B998-B4C8C51770FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10F8D53C-0314-495F-9557-90243E6E5B5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10F8D53C-0314-495F-9557-90243E6E5B5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10F8D53C-0314-495F-9557-90243E6E5B5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10F8D53C-0314-495F-9557-90243E6E5B5C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
