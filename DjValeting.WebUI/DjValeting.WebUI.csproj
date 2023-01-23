@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
@@ -19,10 +19,6 @@
   <ItemGroup>
     <ProjectReference Include="..\DjValeting.Business\DjValeting.Business.csproj" />
     <ProjectReference Include="..\DjValeting.DAL\DjValeting.DAL.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Models\ViewModels\" />
   </ItemGroup>
 
 </Project>

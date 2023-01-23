@@ -29,12 +29,16 @@ namespace DjValeting.WebUI.Utils
         {
             services.AddScoped<IAuthenticateRepository, AuthenticateRepository>();
             services.AddScoped<IBookingFormRepository, BookingFormRepository>();
+            services.AddScoped<IFlexibilityRepository, FlexibilityRepository>();
+            services.AddScoped<IVehicleSizeRepository, VehicleSizeRepository>();
         }
 
         private void DependencyInjectionServices(IServiceCollection services)
         {
             services.AddScoped<IAuthenticateService,AuthenticateService>();
             services.AddScoped<IBookingFormService,BookingFormService>();
+            services.AddScoped<IFlexibilityService,FlexibilityService>();
+            services.AddScoped<IVehicleSizeService,VehicleSizeService>();
         }
 
         private void DependencyInjectionMappers(IServiceCollection service)

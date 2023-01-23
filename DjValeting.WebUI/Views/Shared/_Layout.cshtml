@@ -4,9 +4,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - DjValeting.WebUI</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />*@
+    <!-- Bootstrap CSS CDN -->
+    <link href="~/shared/twitter-bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <!-- ICONS -->
+    <link rel="stylesheet" type="text/css" href="~/assets/icons/fontawesome/fontawesome.css">
+    <link rel="stylesheet" type="text/css" href="~/assets/icons/linecons/linecons.css">
+    <link rel="stylesheet" type="text/css" href="~/assets/icons/spinnericon/spinnericon.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/solid.css">
     <link rel="stylesheet" type="text/css" href="~/css/fontawesome.css">
     <link rel="stylesheet" href="~/DjValeting.WebUI.styles.css" asp-append-version="true" />
     <!--Data table-->
@@ -16,7 +22,7 @@
     <link href="~/shared/datatable/css/fixedHeader.bootstrap4.min.css" rel="stylesheet" />
     <link href="~/shared/datatable/css/scroller.dataTables.min.css" rel="stylesheet" />
 
-
+    @await RenderSectionAsync("Styles", false)
     <!-- JS Core -->
     <script type="text/javascript" src="~/assets/js-core/jquery-core.js"></script>
     <script type="text/javascript" src="~/assets/js-core/jquery-ui-core.js"></script>
@@ -83,9 +89,11 @@
             &copy; 2023 - DjValeting.WebUI - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @*<script src="~/lib/jquery/dist/jquery.min.js"></script>*@
+    @*<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>*@
+    <script type="text/javascript" src="~/assets/bootstrap/js/bootstrap.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/shared/moment.js/moment.min.js"></script>
     <!-- Data table -->
     <script src="~/shared/datatable/js/datatableNewestVersion/jquery.dataTables.min.js"></script>
     <script src="~/shared/datatable/js/dataTables.bootstrap4.js"></script>
