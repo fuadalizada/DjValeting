@@ -17,6 +17,7 @@ namespace DjValeting.Business.MapConfig
             CreateMap<VehicleSizeDto, VehicleSize>().ReverseMap();
             CreateMap<RoleDto, Role>().ReverseMap();
             CreateMap<UserRoleMappingDto, UserRoleMapping>().ReverseMap();
+            CreateMap<AuthenticateDto, Authenticate>().ReverseMap();
         }
     }
 }

@@ -1,1 +1,139 @@
-﻿
+﻿@using DjValeting.DAL.ViewModels;
+@{
+    Layout = null;
+}
+@model LoginViewModel
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <link href="~/shared/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <style>
+
+        .card {
+            width: 300px;
+            opacity: .6 !important;
+        }
+
+        .page-loading {
+            background-color: #ffffff;
+            content: "";
+            height: 100%;
+            left: 0;
+            position: fixed;
+            text-align: center;
+            top: 0;
+            width: 100%;
+            z-index: 2147483647;
+        }
+
+            .page-loading > img {
+                left: 50%;
+                position: absolute;
+                top: 50%;
+                -webkit-transform: translateX(-50%) translateY(-50%);
+                -moz-transform: translateX(-50%) translateY(-50%);
+                -ms-transform: translateX(-50%) translateY(-50%);
+                -o-transform: translateX(-50%) translateY(-50%);
+                transform: translateX(-50%) translateY(-50%);
+            }
+
+            .page-loading > span {
+                color: #b3b3b3;
+                cursor: pointer;
+                display: inline-block;
+                font-size: 17px;
+                letter-spacing: 0;
+                margin-top: 30px;
+                text-decoration: underline;
+            }
+    </style>
+
+    <link href="~/customStyles/login/login.css" rel="stylesheet" type="text/css" />
+    <!--Jquery -->
+    <script src="~/shared/jquery/jquery.js"></script>
+    <script src="~/shared/jquery/jquery-validate/jquery.validate.js"></script>
+    <script src="~/shared/jquery/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <!-- Font Awesome JS -->
+    <script defer src="~/shared/font-awesome/js/solid.js"></script>
+    <script defer src="~/shared/font-awesome/js/fontawesome.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.page-loading').fadeOut('slow');
+
+            $('#login').on('click', function () {
+                if (($('#email').attr('aria-invalid') === 'false' || $('#email').val())
+                    && ($('#password').attr('aria-invalid') === 'false' || $('#password').val())) {
+                    $('.page-loading').fadeIn('slow');
+                    $('form').submit();
+                }
+            });
+
+            $('body').keypress(function (e) {
+                var key = e.which;
+                if (key === 13)  //the enter key code
+                {
+                    $('#login').click();
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="page-loading">
+        <img src="~/images/loader.gif" alt="" />
+    </div>
+    <div class="container mt-5 pt-5">
+        <div class="card mx-auto border-0" style="width:350px">
+            <div class="card-body pb-4">
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="pills-login-tab">
+                        <form asp-controller="Account" asp-action="Login" id="LoginForm">
+                            <div class="login100-pic text-center" data-tilt>
+                                <h3 style="margin-left:51%;margin-top:-9%; color:#2c5b8f">DJ Valeting</h3>
+                            </div>
+                            <div class="wrap-input100 validate-input">
+                                <input type="text" asp-for="Email" class="input100" id="email" placeholder="Email" autofocus>
+                                <span asp-validation-for="Email" style="margin-left:22px;" class="text-danger"></span>
+                                <span class="focus-input100"></span>
+                                <span class="symbol-input100">
+                                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                                </span>
+                            </div>
+
+                            <div class="wrap-input100 validate-input">
+                                <input type="password" asp-for="Password" class="input100" id="password" placeholder="Password">
+                                <span asp-validation-for="Password" style="margin-left:22px;" class="text-danger"></span>
+                                <span class="focus-input100"></span>
+                                <span class="symbol-input100">
+                                    <i class="fa fa-lock" aria-hidden="true"></i>
+                                </span>
+                                <span class="text-danger">@ViewBag.ErrorMessage</span>
+                            </div>
+
+                            <div class="container-login100-form-btn" data-tilt>
+                                <button type="button" id="login" class="login100-form-btn">Login</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="col text-right" style="color:white;font-size:large;position:absolute;bottom:20px;font-weight:bold;">
+            © 2023 Fuad Alizada
+        </div>
+    </footer>
+    <script src="~/shared/twitter-bootstrap/js/bootstrap.js"></script>
+    <script src="~/customStyles/login/tilt/tilt.jquery.min.js"></script>
+    <script>
+        $('.js-tilt').tilt({
+            scale: 1.1
+        })
+    </script>
+</body>
+</html>

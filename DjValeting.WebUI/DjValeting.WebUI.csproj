@@ -17,11 +17,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DjValeting.Business\DjValeting.Business.csproj" />
     <ProjectReference Include="..\DjValeting.DAL\DjValeting.DAL.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Models\ViewModels\" />
+    <Folder Include="wwwroot\customScripts\" />
   </ItemGroup>
 
 </Project>
