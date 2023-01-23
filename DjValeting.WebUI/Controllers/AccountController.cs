@@ -33,5 +33,11 @@ namespace DjValeting.WebUI.Controllers
             ViewBag.ErrorMessage = "Email or password is incorrect.Please try again.";
             return View(model);
         }
+
+        [HttpGet]
+        public IActionResult LogOut()
+        {
+            return RedirectToAction("Login", "Account");
+        }
     }
 }
