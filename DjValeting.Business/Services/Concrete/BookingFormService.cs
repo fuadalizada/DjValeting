@@ -9,9 +9,11 @@ namespace DjValeting.Business.Services.Concrete
     public class BookingFormService : BaseService<BookingFormDto, BookingForm, IBookingFormRepository>, IBookingFormService
     {
         private readonly IBookingFormRepository _bookingFormRepository;
+        private readonly IMapper _mapper;
         public BookingFormService(IBookingFormRepository repository, IMapper mapper) : base(repository, mapper)
         {
             _bookingFormRepository = repository;
+            _mapper = mapper;
         }
 
         public override async Task<IQueryable<BookingFormDto>> GetAllAsync()
@@ -32,6 +34,20 @@ namespace DjValeting.Business.Services.Concrete
         public async Task<bool> ApproveForm(Guid id)
         {
             var result = await _bookingFormRepository.ApproveForm(id);
+            return result;
+        }
+
+        public override async Task<BookingFormDto> FindByIdAsync(Guid id)
+        {
+            var response = await _bookingFormRepository.FindByIdAsync(id);
+            var result = _mapper.Map<BookingFormDto>(response);
+            return result;
+        }
+
+        public async Task<bool> UpdateForm(BookingFormDto formDto)
+        {
+            var response = _mapper.Map<BookingForm>(formDto);
+            var result = await _bookingFormRepository.UpdateForm(response);
             return result;
         }
     }

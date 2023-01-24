@@ -1,11 +1,14 @@
-﻿@model BookingFormList
+﻿@using DjValeting.Business.DTOs;
+@model BookingFormDto
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Update";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>User</h1>
+<h2>Update</h2>
+
+
 @section Styles
     {
     <link href="~/shared/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" />
@@ -13,8 +16,10 @@
 @section Scripts{
     <script src="~/shared/jquery.form/jquery.form.js"></script>
     <script src="~/shared/bootstrap-daterangepicker/moment.min.js"></script>
-    <script src="~/customscripts/userformjs.js"></script>
+    <script src="~/customscripts/adminDatatableJs.js"></script>
 }
+
+
 
 <div class="row">
     <div class="col-12">
@@ -23,16 +28,16 @@
                 <div class="row">
                     <label class="col-lg-6 col-form-label">Name:</label>
                     <div class="col-lg-4">
-                        <input type="text" value="" class="form-control Name" />
+                        <input type="text" class="form-control Name" value="@Model.Name" />
                     </div>
                 </div>
-            </div>           
+            </div>
         </div>
-       
+
         <div class="form-group row">
             <label class="col-sm-3 col-form-label">Email Address:</label>
             <div class="col-sm-8 parent" id="email">
-                <input type="email" class="form-control email" />
+                <input type="email" class="form-control email" value="@Model.Email" />
             </div>
         </div>
 
@@ -40,48 +45,48 @@
             <label class="col-sm-3 col-form-label">Booking Date:</label>
             <div class="col-sm-6 col-md-5 col-xl-3 mb-sm-2">
                 <div class="input-group date" id="createDate" data-target-input="nearest">
-                    <input type="text" class="form-control datetimepicker-input" name="createDate" data-target="#createDate" value="@DateTime.Now.ToString("dd/MM/yyyy")" />
+                    <input type="text" class="form-control datetimepicker-input" name="createDate" data-target="#createDate" value="@Model.CreateDate" />
                     <div class="input-group-append" data-target="#createDate" data-toggle="datetimepicker">
                         <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                     </div>
                 </div>
             </div>
         </div>
-        
+
         <div class="form-group row">
             <label class="col-sm-3 col-form-label">Contact Number:</label>
             <div class="col-sm-8 parent">
-                <input type="text" class="form-control contact" />
+                <input type="text" class="form-control contact" value="@Model.ContactNumber" />
             </div>
         </div>
         <div class="form-group row">
             <label class="col-sm-3 col-form-label">Flexibility:</label>
             <div class="col-sm-8 company-address-container">
                 <select id="flexibilityId" name="Flexibility" class="form-control select">
-                @foreach (var item in Model.FlexibilityDtos)
-                {
-                    <option value="@item.Id">@item.Name</option>
-                }
-            </select>
+                    @foreach (var item in ViewBag.FlexibilityList)
+                    {
+                        <option selected="@(item.Id == Model.FlexibilityId)" value="@item.Id">@item.Name</option>
+                    }
+                </select>
             </div>
         </div>
         <div class="form-group row">
             <label class="col-sm-3 col-form-label">Vehicle Size:</label>
             <div class="col-sm-8 parent">
-               <select id="vehicleSizeId" name="VehicleSize" class="form-control select">
-                @foreach (var item in Model.VehicleSizeDtos)
-                {
-                    <option value="@item.Id">@item.Name</option>
-                }
-            </select>
+                <select id="vehicleSizeId" name="VehicleSize" class="form-control select">
+                    @foreach (var item in ViewBag.VehicleSizeList)
+                    {
+                        <option selected="@(item.Id == Model.VehicleSizeId)" value="@item.Id">@item.Name</option>
+                    }
+                </select>
             </div>
         </div>
-       
-        
+
+
     </div>
     <div class="row mt-3" style="justify-content:center;">
         <div class="mr-1 ml-1 mt-1">
-            <input id="Save" type="button" class="btn btn-success" value="Create Form">
-        </div>       
+            <input data-id="@Model.Id" id="Confirm" type="button" class="btn btn-success" value="Confirm">
+        </div>
     </div>
 </div>

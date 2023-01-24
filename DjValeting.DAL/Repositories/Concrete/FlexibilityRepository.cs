@@ -13,6 +13,6 @@ namespace DjValeting.DAL.Repositories.Concrete
         public override async Task<IQueryable<Flexibility>> GetAllAsync()
         {
             return await base.GetAllAsync();
-        }
+        }      
     }
 }

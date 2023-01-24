@@ -35,21 +35,31 @@ namespace DjValeting.WebUI.Controllers
         [HttpPost]
         public async Task<BookingFormDto> CreateForm(BookingFormViewModel bookingFormViewModel)
         {
-            BookingFormDto bookingFormDto = new()
+            try
             {
-                Id = Guid.NewGuid(),
-                Name = bookingFormViewModel.Name,
-                Email = bookingFormViewModel.Email,
-                FlexibilityId = bookingFormViewModel.FlexibilityId,
-                VehicleSizeId = bookingFormViewModel.VehicleSizeId,
-                ContactNumber = bookingFormViewModel.ContactNumber,
-                IsActive = false,
-                CreateDate = DateTime.ParseExact(bookingFormViewModel.CreateDate, "dd/MM/yyyy", null)
-            };
-            var result = await _bookingFormService.AddAsync(bookingFormDto);
+                BookingFormDto bookingFormDto = new()
+                {
+                    Id = Guid.NewGuid(),
+                    Name = bookingFormViewModel.Name,
+                    Email = bookingFormViewModel.Email,
+                    FlexibilityId = bookingFormViewModel.FlexibilityId,
+                    VehicleSizeId = bookingFormViewModel.VehicleSizeId,
+                    ContactNumber = bookingFormViewModel.ContactNumber,
+                    IsActive = false,
+                    CreateDate = Convert.ToDateTime(bookingFormViewModel.CreateDate),
+                };
+                var result = await _bookingFormService.AddAsync(bookingFormDto);
+                return result;
+            }
+            catch (Exception ex)
+            {
 
-            return result;
+                throw;
+            }
+           
+            
+
+            
         }
-
     }
 }

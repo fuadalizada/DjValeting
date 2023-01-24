@@ -34,7 +34,7 @@ namespace DjValeting.DAL.Repositories.Concrete
             {
                 return false;
             }
-        }
+        }       
 
         public virtual async Task<TEntity> FindByIdAsync(Guid id)
         {

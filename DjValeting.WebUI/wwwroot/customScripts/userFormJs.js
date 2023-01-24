@@ -1,8 +1,8 @@
-﻿
-
-var toastr;
+﻿var toastr;
+var selectPlaceholder = 'Choose';
 $(document).ready(function () {
     CreateForm();
+    Select2Plugin();
 });
 
 function CreateForm() {
@@ -30,7 +30,10 @@ function CreateForm() {
                 contentType: false,
                 success: function (data) {
                     showSuccessMessage("Successfully created", "Information");
-                    window.location.reload();
+                    setTimeout(() => {
+                        window.location.reload();
+                    }
+                        , 2000);                    
                 }
             });
         }
@@ -66,4 +69,11 @@ function showInfoMessage(message, title) {
 }
 function showWarningMessage(message, title) {
     toastr["warning"](message, title);
+}
+
+function Select2Plugin() {
+    $('.select').select2({
+        placeholder: selectPlaceholder,
+        allowClear: true        
+    })
 }
