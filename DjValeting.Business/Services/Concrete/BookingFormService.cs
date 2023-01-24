@@ -21,5 +21,10 @@ namespace DjValeting.Business.Services.Concrete
         {
             return await base.AddAsync(dto);
         }
+
+        public override async Task<bool> DeleteAsync(Guid id)
+        {
+            return await base.DeleteAsync(id);
+        }
     }
 }

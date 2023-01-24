@@ -22,5 +22,10 @@ namespace DjValeting.DAL.Repositories.Concrete
         {
             return await base.AddAsync(entity);
         }
+
+        public override async Task<bool> DeleteAsync(Guid id)
+        {
+            return await base.DeleteAsync(id);
+        }
     }
 }

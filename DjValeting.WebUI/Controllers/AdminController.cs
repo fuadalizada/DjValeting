@@ -18,5 +18,13 @@ namespace DjValeting.WebUI.Controllers
             var result = await _bookingFormService.GetAllAsync();
             return View(result);
         }
+
+        [HttpDelete]
+        public async Task<bool> DeleteForm(string id)
+        {
+            var guid = new Guid(id);
+            var result = await _bookingFormService.DeleteAsync(guid);
+            return result;
+        }
     }
 }
