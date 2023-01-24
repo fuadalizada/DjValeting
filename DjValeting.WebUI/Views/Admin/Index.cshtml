@@ -18,21 +18,42 @@
                     <th>Booking Date<br /><input type="text" placeholder="&#xF002;" class="form-control" /></th>
                     <th>Contact Number<br /><input type="text" placeholder="&#xF002;" class="form-control" /></th>
                     <th>Email Address<br /><input type="text" placeholder="&#xF002;" class="form-control" /></th>
-                    <th><i style="color: red; font-size: 13px; font-weight: bold;" class="fas fa-trash-alt "></i></th>
+                    <th><i style="color: red; font-size: 13px; font-weight: bold;" class="fas fa-trash-alt"></i></th>
+                    <th><i style="color: blue; font-size: 13px; font-weight: bold;" class="fas fa-edit"></i></th>
+                    <th><i style="color: green; font-size: 13px; font-weight: bold;" class="fas fa-check"></i></th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var item in Model)
                 {
-                    <tr>
-                        <td>@item.Name</td>
-                        <td>@item.Flexibility.Name</td>
-                        <td>@item.VehicleSize.Name</td>
-                        <td>@item.CreateDate.ToShortDateString()</td>
-                        <td>@item.ContactNumber</td>
-                        <td>@item.Email</td>
-                        <td><button type="button" class="deleteIcon" data-id="@item.Id"><i style="color: red; font-size: 13px; font-weight: bold;" class="fas fa-trash-alt "></i></button></td>
-                    </tr>
+                    @if (item.IsActive)
+                    {
+                        <tr style="background-color:green;">
+                            <td>@item.Name</td>
+                            <td>@item.Flexibility.Name</td>
+                            <td>@item.VehicleSize.Name</td>
+                            <td>@item.CreateDate.ToShortDateString()</td>
+                            <td>@item.ContactNumber</td>
+                            <td>@item.Email</td>
+                            <td><button type="button" class="deleteIcon" data-id="@item.Id"><i style="color: red; font-size: 13px; font-weight: bold;" class="fas fa-trash-alt"></i></button></td>
+                            <td><button type="button" class="editIcon" data-id="@item.Id"><i style="color: blue; font-size: 13px; font-weight: bold;" class="fas fa-edit"></i></button></td>
+                            <td><button type="button" class="approveIcon" data-id="@item.Id"><i style="color: green; font-size: 13px; font-weight: bold;" class="fas fa-check"></i></button></td>
+                        </tr>
+                    }
+                    else
+                    {
+                        <tr>
+                            <td>@item.Name</td>
+                            <td>@item.Flexibility.Name</td>
+                            <td>@item.VehicleSize.Name</td>
+                            <td>@item.CreateDate.ToShortDateString()</td>
+                            <td>@item.ContactNumber</td>
+                            <td>@item.Email</td>
+                            <td><button type="button" class="deleteIcon" data-id="@item.Id"><i style="color: red; font-size: 13px; font-weight: bold;" class="fas fa-trash-alt"></i></button></td>
+                            <td><button type="button" class="editIcon" data-id="@item.Id"><i style="color: blue; font-size: 13px; font-weight: bold;" class="fas fa-edit"></i></button></td>
+                            <td><button type="button" class="approveIcon" data-id="@item.Id"><i style="color: green; font-size: 13px; font-weight: bold;" class="fas fa-check"></i></button></td>
+                        </tr>
+                    }                    
                 }
             </tbody>
         </table>

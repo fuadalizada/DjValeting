@@ -27,5 +27,13 @@ namespace DjValeting.DAL.Repositories.Concrete
         {
             return await base.DeleteAsync(id);
         }
+
+        public async Task<bool> ApproveForm(Guid id)
+        {
+            var result = await Context.Set<BookingForm>().Where(x=>x.Id == id).FirstOrDefaultAsync();
+            result.IsActive = true;
+            Context.Update(result);
+            return await Context.SaveChangesAsync() > 0;            
+        }
     }
 }

@@ -43,7 +43,7 @@ namespace DjValeting.WebUI.Controllers
                 FlexibilityId = bookingFormViewModel.FlexibilityId,
                 VehicleSizeId = bookingFormViewModel.VehicleSizeId,
                 ContactNumber = bookingFormViewModel.ContactNumber,
-                IsActive = true,
+                IsActive = false,
                 CreateDate = DateTime.ParseExact(bookingFormViewModel.CreateDate, "dd/MM/yyyy", null)
             };
             var result = await _bookingFormService.AddAsync(bookingFormDto);

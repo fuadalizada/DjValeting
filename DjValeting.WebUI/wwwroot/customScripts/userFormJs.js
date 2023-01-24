@@ -1,14 +1,8 @@
 ﻿
 
-
+var toastr;
 $(document).ready(function () {
     CreateForm();
-
-    //$("#createDate").datetimepicker({
-    //    format: "DD/MM/YYYY"
-    //});
-
-
 });
 
 function CreateForm() {
@@ -21,7 +15,7 @@ function CreateForm() {
             var flexibilityId = $("#flexibilityId").val();
             var vehicleSizeId = $("#vehicleSizeId").val();
             var contactNumber = $(".contact").val();
-            
+
             formData.append("Name", name);
             formData.append("CreateDate", formCreateDate);
             formData.append("Email", email);
@@ -35,9 +29,41 @@ function CreateForm() {
                 processData: false,
                 contentType: false,
                 success: function (data) {
+                    showSuccessMessage("Successfully created", "Information");
                     window.location.reload();
                 }
             });
+        }
+    );
+}
 
-        });
+toastr.options = {
+    "closeButton": true,
+    "debug": false,
+    "newestOnTop": true,
+    "progressBar": true,
+    "positionClass": "toast-top-right",
+    "preventDuplicates": false,
+    "onclick": null,
+    "showDuration": "300",
+    "hideDuration": "1000",
+    "timeOut": "5000",
+    "extendedTimeOut": "1000",
+    "showEasing": "swing",
+    "hideEasing": "linear",
+    "showMethod": "fadeIn",
+    "hideMethod": "fadeOut"
+};
+
+function showSuccessMessage(message, title) {
+    toastr["success"](message, title);
+}
+function showErrorMessage(message, title) {
+    toastr["error"](message, title);
+}
+function showInfoMessage(message, title) {
+    toastr["info"](message, title);
+}
+function showWarningMessage(message, title) {
+    toastr["warning"](message, title);
 }
