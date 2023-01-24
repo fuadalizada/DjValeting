@@ -1,6 +1,7 @@
 ﻿using DjValeting.DAL.DbContext;
 using DjValeting.DAL.Repositories.Abstract;
 using DjValeting.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace DjValeting.DAL.Repositories.Concrete
 {
@@ -11,9 +12,10 @@ namespace DjValeting.DAL.Repositories.Concrete
 
         }
 
-        public override  async Task<IQueryable<BookingForm>> GetAllAsync()
+        public override async Task<IQueryable<BookingForm>> GetAllAsync()
         {
-            return await base.GetAllAsync();
+            var result = await Context.Set<BookingForm>().Include(x=>x.Flexibility).Include(x=>x.VehicleSize).ToListAsync();
+            return result.AsQueryable();
         }
 
         public override async Task<BookingForm> AddAsync(BookingForm entity)
