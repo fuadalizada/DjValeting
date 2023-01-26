@@ -6,5 +6,6 @@ namespace DjValeting.DAL.Repositories.Abstract
     {
         Task<bool> ApproveForm(Guid id);
         Task<bool> UpdateForm(BookingForm form);
+        Task<string> GetClientEmail(Guid formId);
     }
 }

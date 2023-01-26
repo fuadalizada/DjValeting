@@ -1,11 +1,8 @@
-﻿using AutoMapper;
-using DjValeting.Business.DTOs;
+﻿using DjValeting.Business.DTOs;
 using DjValeting.Business.Services.Abstract;
-using DjValeting.Domain.Entities;
+using DjValeting.WebUI.Helpers;
 using DjValeting.WebUI.Models;
-using MessagePack.Formatters;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace DjValeting.WebUI.Controllers
 {
@@ -14,12 +11,14 @@ namespace DjValeting.WebUI.Controllers
         private readonly IBookingFormService _bookingFormService;
         private readonly IFlexibilityService _flexibilityService;
         private readonly IVehicleSizeService _vehicleSizeService;
+        private readonly SomeActionsAfterApprovingForm _someActionsAfterApprovingForm;
 
-        public AdminController(IBookingFormService bookingFormService, IFlexibilityService flexibilityService, IVehicleSizeService vehicleSizeService)
+        public AdminController(IBookingFormService bookingFormService, IFlexibilityService flexibilityService, IVehicleSizeService vehicleSizeService, SomeActionsAfterApprovingForm someActionsAfterApprovingForm)
         {
             _bookingFormService = bookingFormService;
             _flexibilityService = flexibilityService;
             _vehicleSizeService = vehicleSizeService;
+            _someActionsAfterApprovingForm = someActionsAfterApprovingForm;
         }
 
         [HttpGet]
@@ -42,8 +41,14 @@ namespace DjValeting.WebUI.Controllers
         {
             var guid = new Guid(id);
             var result = await _bookingFormService.ApproveForm(guid);
+            if (result)
+            {
+                var clientEmail = await _bookingFormService.GetClientEmail(guid);
+                _someActionsAfterApprovingForm.FormApproved += _someActionsAfterApprovingForm.SendEmail;
+                _someActionsAfterApprovingForm.OnSendMailAfterApprovingForm(clientEmail);
+            }
             return result;
-        }
+        }        
 
         [HttpGet]
         public async Task<IActionResult> Update(string id)

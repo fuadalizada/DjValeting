@@ -58,5 +58,11 @@ namespace DjValeting.DAL.Repositories.Concrete
             }
             return await Context.SaveChangesAsync() > 0;
         }
+
+        public async Task<string> GetClientEmail(Guid formId)
+        {
+            var result = await Context.Set<BookingForm>().Where(x=>x.Id == formId).Select(x => x.Email).FirstOrDefaultAsync();
+            return result;
+        }
     }
 }

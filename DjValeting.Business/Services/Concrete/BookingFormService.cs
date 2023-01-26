@@ -50,5 +50,10 @@ namespace DjValeting.Business.Services.Concrete
             var result = await _bookingFormRepository.UpdateForm(response);
             return result;
         }
+
+        public async Task<string> GetClientEmail(Guid formId)
+        {
+            return await _bookingFormRepository.GetClientEmail(formId);
+        }
     }
 }

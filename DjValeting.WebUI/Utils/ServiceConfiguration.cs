@@ -6,6 +6,7 @@ using DjValeting.DAL.DbContext;
 using DjValeting.DAL.Repositories.Abstract;
 using DjValeting.DAL.Repositories.Concrete;
 using DjValeting.DAL.Settings;
+using DjValeting.WebUI.Helpers;
 using Microsoft.EntityFrameworkCore;
 
 namespace DjValeting.WebUI.Utils
@@ -23,6 +24,7 @@ namespace DjValeting.WebUI.Utils
             DependencyInjectionRepositories(services);
             DependencyInjectionServices(services);
             DependencyInjectionMappers(services);
+            DependencyInjectionHelperClasses(services);
         }
 
         private void DependencyInjectionRepositories(IServiceCollection services)
@@ -31,6 +33,11 @@ namespace DjValeting.WebUI.Utils
             services.AddScoped<IBookingFormRepository, BookingFormRepository>();
             services.AddScoped<IFlexibilityRepository, FlexibilityRepository>();
             services.AddScoped<IVehicleSizeRepository, VehicleSizeRepository>();
+        }
+
+        private void DependencyInjectionHelperClasses(IServiceCollection services)
+        {
+            services.AddScoped<SomeActionsAfterApprovingForm>();
         }
 
         private void DependencyInjectionServices(IServiceCollection services)

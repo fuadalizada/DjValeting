@@ -6,5 +6,6 @@ namespace DjValeting.Business.Services.Abstract
     {
         Task<bool> ApproveForm(Guid id);
         Task<bool> UpdateForm(BookingFormDto formDto);
+        Task<string> GetClientEmail(Guid formId);
     }
 }
